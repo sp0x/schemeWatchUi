@@ -15,13 +15,8 @@ class SignIn extends Component {
         <div className="login__content">
           <div className="login__content__inner">
             <div className="login__content__header">
-              <img
-                className="login__content__header__logo"
-                src="https://user-images.githubusercontent.com/21834/34442516-fb1a1a3c-ecc2-11e7-8fe8-530435f22336.jpg"
-                alt="logo"
-              />
               <div className="login__content__header__title">
-                Gatsby + Firebase Starter
+                Scheme Watcher
               </div>
             </div>
             <div className="login__content__login-form">
@@ -50,7 +45,7 @@ class SignIn extends Component {
                 <div className="login__content__creator__inner">
                   <div>
                     <iframe
-                      src="https://ghbtns.com/github-btn.html?user=ovidiumihaibelciug&type=follow&count=true"
+                      src="https://ghbtns.com/github-btn.html?user=sp0x&type=follow&count=true"
                       frameborder="0"
                       scrolling="0"
                       width="170px"
@@ -59,7 +54,7 @@ class SignIn extends Component {
                   </div>
                   <div>
                     <iframe
-                      src="https://ghbtns.com/github-btn.html?user=ovidiumihaibelciug&repo=gatsby-firebase-starter&type=star&count=true"
+                      src="https://ghbtns.com/github-btn.html?user=sp0x&repo=schemeWatch&type=star&count=true"
                       frameborder="0"
                       scrolling="0"
                       width="170px"

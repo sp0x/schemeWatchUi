@@ -24,6 +24,7 @@ class Firebase {
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
     this.facebookProvider = new app.auth.FacebookAuthProvider();
+    this.githubProvider = new app.auth.GithubAuthProvider();
     this.twitterProvider = new app.auth.TwitterAuthProvider();
   }
 
@@ -37,6 +38,9 @@ class Firebase {
 
   doSignInWithGoogle = () =>
     this.auth.signInWithPopup(this.googleProvider);
+
+  doSignInWithGithub = () =>
+    this.auth.signInWithPopup(this.githubProvider);
 
   doSignInWithFacebook = () =>
     this.auth.signInWithPopup(this.facebookProvider);
