@@ -4,10 +4,9 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing container">
-        <h1>Landing</h1>
+        <h1>Scheme Watch</h1>
         <p>
-          The Landing Page is open to everyone, even though the user
-          isn't signed in.
+          Monitor your scraping schemes without any debugging
         </p>
       </div>
     );

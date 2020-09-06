@@ -8,10 +8,8 @@ import {
 } from '../utils/Session';
 import Home from '../components/scenes/Home/Home';
 
-const condition = authUser => !!authUser;
 const HomePage = compose(
-  withEmailVerification,
-  withAuthorization(condition),
+  withEmailVerification  
 )(Home);
 
 export default () => {

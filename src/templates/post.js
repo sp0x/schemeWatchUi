@@ -7,11 +7,8 @@ import {
   withEmailVerification,
 } from '../utils/Session';
 
-const condition = authUser => !!authUser;
-
 const PostPage = compose(
-  withEmailVerification,
-  withAuthorization(condition),
+  withEmailVerification  
 )(PostBase);
 
 export class Post extends Component {

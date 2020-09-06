@@ -7,10 +7,8 @@ import {
   withAuthorization,
 } from '../utils/Session';
 
-const condition = authUser => !!authUser;
 const AccountPage = compose(
-  withEmailVerification,
-  withAuthorization(condition),
+  withEmailVerification  
 )(Account);
 
 export default () => (

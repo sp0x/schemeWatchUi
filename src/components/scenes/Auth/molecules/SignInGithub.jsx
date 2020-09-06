@@ -24,7 +24,7 @@ class SignInGithub extends Component {
 
   onSubmit = event => {
     this.props.firebase
-      .doSignInWithFacebook()
+      .doSignInWithGithub()
       .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
         return this.props.firebase.user(socialAuthUser.user.uid).set({
