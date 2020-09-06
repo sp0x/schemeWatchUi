@@ -6,7 +6,7 @@ class Landing extends Component {
       <div className="landing container">
         <h1>Scheme Watch</h1>
         <p>
-          Monitor your scraping schemes without any debugging
+          Monitor your scraping schemes without any debugging.
         </p>
       </div>
     );

@@ -97,9 +97,9 @@ class Home extends Component {
     return (
       <div className="home container">
         <div className="home__details">
-          <h1 className="home__title">Home Page</h1>
+          <h1 className="home__title">Scheme Watcher</h1>
           <p className="home__description">
-            The Home Page is accessible by every signed in user.
+            Your scraping schemes
           </p>
         </div>
 

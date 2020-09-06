@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import SignUpFormBase from './molecules/SignUpFormBase';
 import SignInGoogle from '../../molecules/SignInGoogle';
-import SignInFacebook from '../../molecules/SignInFacebook';
-import SignInTwitter from '../../molecules/SignInTwitter';
 import SignUpLink from '../../scenes/SignUp/atoms/SignUpLink';
 import SignInGithub from '../../molecules/SignInGithub';
 
@@ -38,10 +36,6 @@ class SignUp extends Component {
                 <div className="register__content__providers--left">
                   <SignInGoogle />
                   <SignInGithub />
-                </div>
-                <div className="register__content__providers--right">
-                  <SignInTwitter />
-                  <SignInFacebook />
                 </div>
               </div>
             </div>
