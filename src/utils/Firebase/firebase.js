@@ -92,9 +92,10 @@ class Firebase {
 
   users = () => this.db.collection('users');
 
-  posts = () => this.db.collection('posts');
+  schemes = () => this.db.collection('schemes');
 
-  post = post => this.posts().where('slug', '==', post.slug);
+  scheme = scheme => this.schemes()
+    .where('site', '==', scheme.site);
 }
 
 let firebase;
