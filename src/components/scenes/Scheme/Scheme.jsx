@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../../utils/Firebase';
 
-class Post extends Component {
+class Scheme extends Component {
   _initFirebase = false;
 
   state = {
-    post: null,
+    scheme: null,
     loading: true,
   };
 
@@ -13,7 +13,7 @@ class Post extends Component {
     if (this.props.firebase && !this._initFirebase) {
       this._initFirebase = true;
 
-      this.getPost();
+      this.getScheme();
     }
   };
 
@@ -31,33 +31,33 @@ class Post extends Component {
     }
   }
 
-  getPost = () => {
-    const { firebase, slug } = this.props;
+  getScheme = () => {
+    const { firebase, site } = this.props;
 
     firebase
-      .post({ slug })
+      .scheme({ site })
       .get()
       .then(result => {
         this.setState({
-          post: result.docs && result.docs[0].data(),
+          scheme: result.docs && result.docs[0].data(),
           loading: false,
         });
       });
   };
 
   render() {
-    const { loading, post } = this.state;
-    const { isLoaded, title, description } = this.props;
+    const { loading, scheme } = this.state;
+    const { isLoaded, title, description, site } = this.props;
 
     const finalDescription = isLoaded
-      ? description
-      : post && post.description;
-    const finalTitle = isLoaded ? title : post && post.title;
+      ? site
+      : scheme && `Got ${scheme.results} results in total`;
+    const finalTitle = isLoaded ? title : scheme && scheme.site;
 
     if (!isLoaded && loading) return null;
 
     return (
-      <div className="post container">
+      <div className="scheme container">
         <h1>{finalTitle}</h1>
         <div>{finalDescription}</div>
       </div>
@@ -65,4 +65,4 @@ class Post extends Component {
   }
 }
 
-export default withFirebase(Post);
+export default withFirebase(Scheme);

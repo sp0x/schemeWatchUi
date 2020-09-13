@@ -60,46 +60,36 @@ class Home extends Component {
 
     if (loading) return <Loading />;
 
+    const statusMap = { "ok-data": "ok with-data", "ok": "ok" };
     return (
       <div className="home container">
         <div className="home__details">
           <h1 className="home__title">Scheme Watcher</h1>
           <p className="home__description">
-            Your scraping schemes
+            Keep track of your scraping schemes, ensuring they're always running well.
           </p>
         </div>
 
         <div className="home__schemes">
           <div className="home__schemes__items">
-            {schemes &&
-              schemes.length > 0 &&
-              schemes.map((item, id) => (
-                <div key={id} className="home__scheme">
-                  <Link
-                    className="home__scheme__title"
-                    to={'/scheme/' + item.site}
-                  >
-                    <Image
-                      className="home__scheme__image"
-                      filename="gatsby-post-bg.jpg"
-                    />
-                    <div className="home__scheme__text">
-                      {item.site && item.site < 30
-                        ? item.site
-                        : item.site.slice(0, 30) + '...'}
-                      <div
-                        className="home__scheme__description"
-                        key={id}
-                      >
-                        {item.code &&
-                        item.code.length > 150
-                          ? item.code.slice(0, 150)
-                          : item.code + '...'}
-                      </div>
+            <ul className="list-group status-list">
+              {schemes &&
+                schemes.length > 0 &&
+                schemes.map((item, id) => (
+                  <li key={id} className={`home__scheme list-group-item status-light ${statusMap[item.code]}`}>
+                    <p>
+                      <Link
+                        className="home__scheme__title"
+                        to={'/scheme/' + item.site}>
+                        {item.site}
+                      </Link>
+                    </p>
+                    <div className="scheme_description">
+                      {`With ${item.results} results gathered.`}
                     </div>
-                  </Link>
-                </div>
-              ))}
+                  </li>
+                ))}
+            </ul>
           </div>
         </div>
       </div>

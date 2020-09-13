@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import Layout from '../utils/layout';
-import PostBase from '../components/scenes/Post/Post';
+import SchemeBase from '../components/scenes/Scheme/Scheme';
 import { compose } from 'recompose';
 import {
   withAuthorization,
   withEmailVerification,
 } from '../utils/Session';
 
-const PostPage = compose(
+const SchemePage = compose(
   withEmailVerification  
-)(PostBase);
+)(SchemeBase);
 
-export class Post extends Component {
+export class Scheme extends Component {
   render() {
     const {
-      pageContext: { title, description, slug },
+      pageContext: { title, description, site },
       uri,
     } = this.props;
 
@@ -22,14 +22,14 @@ export class Post extends Component {
 
     const uriSlug = uriItems[uriItems.length - 1];
 
-    const isLoaded = uriSlug === slug;
+    const isLoaded = uriSlug === site;
 
     return (
-      <Layout>
-        <PostPage
+      <Layout hideNav>
+        <SchemePage
           title={title}
           description={description}
-          slug={slug || uriSlug}
+          site={site || uriSlug}
           isLoaded={isLoaded}
         />
       </Layout>
@@ -37,4 +37,4 @@ export class Post extends Component {
   }
 }
 
-export default Post;
+export default Scheme;

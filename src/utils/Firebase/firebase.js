@@ -91,11 +91,12 @@ class Firebase {
   user = uid => this.db.doc(`users/${uid}`);
 
   users = () => this.db.collection('users');
+  
+  scheme = scheme => this.schemes()
+    .where('site', '==', scheme.site);
 
   schemes = () => this.db.collection('schemes');
 
-  scheme = scheme => this.schemes()
-    .where('site', '==', scheme.site);
 }
 
 let firebase;
