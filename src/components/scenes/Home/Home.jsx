@@ -10,7 +10,7 @@ class Home extends Component {
   _initFirebase = false;
 
   state = {
-    posts: [],
+    schemes: [],
     loading: true,
     title: '',
     description: '',
@@ -20,7 +20,7 @@ class Home extends Component {
     if (this.props.firebase && !this._initFirebase) {
       this._initFirebase = true;
 
-      this.getPosts();
+      this.getSchemes();
     }
   };
 
@@ -32,54 +32,20 @@ class Home extends Component {
     this.firebaseInit();
   }
 
-  getPosts = () => {
+  getSchemes = () => {
     const { firebase } = this.props;
 
     firebase
-      .posts()
+      .schemes()
       .get()
       .then(querySnapshot => {
         const data = querySnapshot.docs.map(item => item.data());
+        console.log(data);
         this.setState({
-          posts: data,
+          schemes: data,
           loading: false,
         });
       });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const { title, description, posts } = this.state;
-    const { firebase } = this.props;
-
-    let slug =
-      (title.match(/^[a-zA-Z0-9 ]*$/, '') &&
-        title.match(/^[a-zA-Z0-9 ]*$/, '')[0]) ||
-      '';
-
-    const latestPost = {
-      title,
-      slug:
-        slug
-          .toLowerCase()
-          .split(' ')
-          .join('-') +
-        Math.floor(Math.random() * 200) +
-        1,
-      description,
-    };
-
-    const newPosts = [latestPost, ...posts];
-
-    this.setState({
-      posts: newPosts,
-      title: '',
-      description: '',
-    });
-
-    firebase.posts().add({
-      ...latestPost,
-    });
   };
 
   handleChange = e => {
@@ -90,77 +56,40 @@ class Home extends Component {
   };
 
   render() {
-    const { posts, description, title, loading } = this.state;
+    const { schemes, description, title, loading } = this.state;
 
     if (loading) return <Loading />;
 
+    const statusMap = { "ok-data": "ok with-data", "ok": "ok" };
     return (
       <div className="home container">
         <div className="home__details">
           <h1 className="home__title">Scheme Watcher</h1>
           <p className="home__description">
-            Your scraping schemes
+            Keep track of your scraping schemes, ensuring they're always running well.
           </p>
         </div>
 
-        <div className="home__posts">
-          <div className="home__posts__form">
-            <div className="home__posts__form__title">Add Posts</div>
-            <form onSubmit={this.handleSubmit}>
-              <Input
-                name="title"
-                type="text"
-                value={title}
-                labelName="Title"
-                onChange={this.handleChange}
-                required
-              />
-              <Input
-                name="description"
-                type="text"
-                value={description}
-                labelName="Description"
-                onChange={this.handleChange}
-                required
-              />
-
-              <Button
-                className="home__posts__form__btn"
-                type="submit"
-              />
-            </form>
-          </div>
-
-          <div className="home__posts__items">
-            {posts &&
-              posts.length > 0 &&
-              posts.map((item, id) => (
-                <div key={id} className="home__post">
-                  <Link
-                    className="home__post__title"
-                    to={'/post/' + item.slug}
-                  >
-                    <Image
-                      className="home__post__image"
-                      filename="gatsby-post-bg.jpg"
-                    />
-                    <div className="home__post__text">
-                      {item.title && item.title < 30
-                        ? item.title
-                        : item.title.slice(0, 30) + '...'}
-                      <div
-                        className="home__post__description"
-                        key={id}
-                      >
-                        {item.description &&
-                        item.description.length > 150
-                          ? item.description.slice(0, 150)
-                          : item.description + '...'}
-                      </div>
+        <div className="home__schemes">
+          <div className="home__schemes__items">
+            <ul className="list-group status-list">
+              {schemes &&
+                schemes.length > 0 &&
+                schemes.map((item, id) => (
+                  <li key={id} className={`home__scheme list-group-item status-light ${statusMap[item.code]}`}>
+                    <p>
+                      <Link
+                        className="home__scheme__title"
+                        to={'/scheme/' + item.site}>
+                        {item.site}
+                      </Link>
+                    </p>
+                    <div className="scheme_description">
+                      {`With ${item.results} results gathered.`}
                     </div>
-                  </Link>
-                </div>
-              ))}
+                  </li>
+                ))}
+            </ul>
           </div>
         </div>
       </div>

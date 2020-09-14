@@ -8038,6 +8038,11 @@ image-q@^1.1.1:
   resolved "https://registry.yarnpkg.com/image-q/-/image-q-1.1.1.tgz#fc84099664460b90ca862d9300b6bfbbbfbf8056"
   integrity sha1-/IQJlmRGC5DKhi2TALa/u7+/gFY=
 
+image-size@^0.7.4:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.7.5.tgz#269f357cf5797cb44683dfa99790e54c705ead04"
+  integrity sha512-Hiyv+mXHfFEP7LzUL/llg9RwFxxY+o9N3JVLIeG5E7iFIFAalxvRU9UZthBdYDEVnzHMgjnKJPPpay5BWf1g9g==
+
 imagemin-mozjpeg@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/imagemin-mozjpeg/-/imagemin-mozjpeg-8.0.0.tgz#d2ca4e8c982c7c6eda55069af89dee4c1cebcdfd"
@@ -12810,6 +12815,14 @@ schema-utils@^2.6.5:
     "@types/json-schema" "^7.0.4"
     ajv "^6.12.2"
     ajv-keywords "^3.4.1"
+
+scrap-favicon@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/scrap-favicon/-/scrap-favicon-1.0.2.tgz#ab8be7bb4309491d6cfdf9490509bd8e3ee56b72"
+  integrity sha512-6R4nPO11dRIuBD2cNQlltMQt2MgsStmWAL0VTtuoq/b+WYkrar8GZVaHExxX+En58ozhIUAJhrYbFgNSL9wa4Q==
+  dependencies:
+    cheerio "^1.0.0-rc.3"
+    image-size "^0.7.4"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"
